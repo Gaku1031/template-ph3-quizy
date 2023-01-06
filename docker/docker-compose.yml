@@ -14,6 +14,15 @@ services:
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=password
     platform: linux/x86_64
+  # PHPMyAdminサーバー
+  phpmyadmin: # デフォルトのままで不都合ないのでDockerHubにあるイメージをそのまま使う
+    image: phpmyadmin/phpmyadmin:latest
+    environment:
+      PMA_HOST: 'db' # ホストはデータベースサーバーのサービス名(26行目)
+      PMA_USER: 'root' # デフォルトでログインしているユーザー(今回はルートユーザー)
+      PMA_PASSWORD: 'root' # 上記ユーザーのパスワード(今回はルートユーザーのパスワード)
+    ports: # ポートの設定(後で.envでする)
+    - 8082:80
   app:
     build:
       context: ./app
