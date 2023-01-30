@@ -16,9 +16,9 @@ class CreateStudyTable extends Migration
         Schema::create('study', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('study_date');
-            $table->string('study_contents');
-            $table->string('study_languages');
-            $table->string('study_hours');
+            $table->string('study_contents')->nullable();
+            $table->string('study_languages')->nullable();
+            $table->string('study_hours')->default(0);
             $table->timestamps();
 
         });

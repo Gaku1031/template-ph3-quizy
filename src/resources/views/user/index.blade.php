@@ -38,17 +38,17 @@
       <div class="p-body-hour-flex">
         <div class="p-body-hour">
           <p class="hour-title">Today</p>
-          <span class="hour-number">0</span>
+          <span class="hour-number">{{ $today_hours }}</span>
           <span class="hour-text">hour</span>
         </div>
         <div class="p-body-hour">
           <p class="hour-title">Month</p>
-          <span class="hour-number">17</span>
+          <span class="hour-number">{{ $month_hours }}</span>
           <span class="hour-text">hour</span>
         </div>
         <div class="p-body-hour">
           <p class="hour-title">Total</p>
-          <span class="hour-number">19</span>
+          <span class="hour-number">{{ $total_hours }}</span>
           <span class="hour-text">hour</span>
         </div>
       </div>

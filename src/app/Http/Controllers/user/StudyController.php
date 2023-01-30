@@ -8,8 +8,21 @@ use App\Study;
 
 class StudyController extends Controller
 {
+    public function index() {
+        $data = new Study;
+        $hours_per_date = $data->getStudyHoursPerDate();
+        $today_hours = $data->getTodayStudyHours();
+        $month_hours = $data->getMonthStudyHours();
+        $total_hours = $data->getTotalStudyHours();
+        return view('user/index', compact('today_hours', 'month_hours', 'total_hours'));
+    }
+
     public function add() {
-        return view('user/study_record');
+        $data = new Study;
+        $today_hours = $data->getTodayStudyHours();
+        $month_hours = $data->getMonthStudyHours();
+        $total_hours = $data->getTotalStudyHours();
+        return view('user/study_record', compact('today_hours', 'month_hours', 'total_hours'));
     }
 
     public function create(Request $request) {
@@ -29,6 +42,7 @@ class StudyController extends Controller
                 'study_languages' => $language,
             ];
         }
+        // DBに値を挿入
         for ($i = 0; $i < count($contents_data); $i++) {
             for ($j = 0; $j < count($languages_data); $j++) {
                 $param = [
