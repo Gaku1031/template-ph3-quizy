@@ -5,11 +5,16 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Study;
+use Artisan;
 
 class StudyController extends Controller
 {
     public function index() {
         $data = new Study;
+        
+        //バッチ処理の呼び出し
+        // Artisan::call('hoursBatch:nullToZero');
+
         $hours_per_date = $data->getStudyHoursPerDate();
         $today_hours = $data->getTodayStudyHours();
         $month_hours = $data->getMonthStudyHours();

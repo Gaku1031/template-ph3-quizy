@@ -42,16 +42,6 @@ class Study extends Model
         foreach ($period as $key => $date) {
             $dates[] = $date->format('Y-m-d');
         }
-        // dd($dates);
-        
-        // $month_hours_per_date = Study::whereYear('study_date', date('Y'))
-        //                         ->whereMonth('study_date', date('m'))
-        //                         ->orderBy('study_date')
-        //                         ->get()
-        //                         ->groupBy('study_date')
-        //                         ->map(function ($day) {
-        //                             return $day->groupBy('study_date')->sum('study_hours');
-        //                         });
 
         $month_hours_per_date = Study::selectRaw('study_date')
                                 ->selectRaw('sum(study_hours)')
@@ -60,7 +50,7 @@ class Study extends Model
                                 ->toArray();
 
         for ($i = 0; $i < count($month_hours_per_date); $i++) {
-            print_r(array($month_hours_per_date[$i]["sum(study_hours)"]));
+            array($month_hours_per_date[$i]["sum(study_hours)"]);
         }
     }
 }

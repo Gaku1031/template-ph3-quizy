@@ -16,7 +16,7 @@ class NullToZero extends Command
      *
      * @var string
      */
-    protected $signature = 'hoursBatch:nullToZero';
+    protected $signature = 'command:test';
 
     /**
      * The console command description.
@@ -60,5 +60,6 @@ class NullToZero extends Command
             ];
             Study::insert($param);
         }
+        \Log::info('バッチを実行しました。');
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
+use App\Console\Commands\NullToZero;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use function PHPUnit\Framework\isEmpty;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -13,7 +15,7 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+        NullToZero::class,
     ];
 
     /**
@@ -26,6 +28,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        // $schedule->command('hoursBatch:nullToZero')->dailyAt('00:20');
+
+        $schedule->command('command:test')->everyMinute();
+
     }
 
     /**
