@@ -29,7 +29,6 @@ class StudyController extends Controller
                 'study_languages' => $language,
             ];
         }
-
         for ($i = 0; $i < count($contents_data); $i++) {
             for ($j = 0; $j < count($languages_data); $j++) {
                 $param = [
@@ -39,10 +38,9 @@ class StudyController extends Controller
                     'study_hours' => $request->hours,
                     'post_id' => $request->input('post_id'),
                 ];
+                Study::insert($param);
             }
         }
-        dd(count($contents_data));
-        Study::insert($param);
-    return redirect('/');
+        return redirect('/');
     }
 }
