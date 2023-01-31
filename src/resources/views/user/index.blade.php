@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/flatpickr" defer></script>
   <script src="./js/Chart.min.js" defer></script>
   <script src="https://unpkg.com/apexcharts/dist/apexcharts.min.js" defer></script>
@@ -53,16 +54,16 @@
         </div>
       </div>
       <hr class="boundary">
-      <div class="myChart1" id="myChart1" style="min-height: initial">
+      <div class="myChart1" id="myChart1" style="min-height: initial" url1="{{ $url1 }}">
       </div>
     </div>
     <div class="p-body-right">
       <div class="circle-left">
-        <div class="myChart2" id="myChart2">
+        <div class="myChart2" id="myChart2"  url2="{{ $url2 }}">
         </div>
       </div>
       <div class="circle-right">
-        <div  class="myChart3" id="myChart3">
+        <div  class="myChart3" id="myChart3" url3="{{ $url3 }}">
         </div>
       </div>
     </div>
@@ -74,6 +75,13 @@
   </div>
   <label for="pop-up-1" class="p-footer__nav__record">記録・投稿</label>
   <input type="checkbox" id="pop-up-1">
+
+  {{-- jsで使う変数を定義 --}}
+
+  <script>
+    window.myChart1 = {}
+    window.myChart1.hoursPerDate = @json($hours_per_date);
+  </script>
 
   <!-- pop-up -->
   <!-- window1 -->

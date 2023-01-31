@@ -1,3 +1,7 @@
+const url3 = document.getElementById('myChart3').getAttribute('url3');
+
+$.getJSON (url3, function (json) {
+
 let options3 = {
   stroke: {
       width: 0
@@ -20,7 +24,8 @@ let options3 = {
     },
   },
 
-  series: [20, 40, 40],
+  // series: [20, 40, 40],
+  series: json,
   
   plotOptions: {
     pie: {
@@ -76,3 +81,4 @@ let options3 = {
 
   let chart3 = new ApexCharts(document.querySelector("#myChart3"), options3);
   chart3.render();
+})
