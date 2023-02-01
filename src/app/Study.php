@@ -49,6 +49,7 @@ class Study extends Model
                                 ->selectRaw('sum(study_hours)')
                                 ->groupBy('study_date')
                                 ->get()
+                                ->whereBetween('study_date', [$from, $to])
                                 ->sortBy('study_date')
                                 ->toArray();
         $result = [];
