@@ -14,7 +14,7 @@
 // Route::get('/', function () {
 //     return view('user/index');
 // });
-Route::get('/', 'user\StudyController@index');
+Route::get('/', 'user\StudyController@index')->middleware('auth');
 
 Route::get('/user/study/record', 'user\StudyController@add');
 Route::post('/user/study/record', 'user\StudyController@create')->name('study_record');
