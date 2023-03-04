@@ -11,9 +11,6 @@ class StudyController extends Controller
 {
     public function index() {
         $data = new Study;
-        
-        //バッチ処理の呼び出し
-        // Artisan::call('hoursBatch:nullToZero');
 
         //jsonファイルまでのパスを設定
         $url1 = asset('js/hours.json');

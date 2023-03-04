@@ -4,7 +4,6 @@ $.getJSON(url, function (json) {
     let options1 = {
     series: [{
         name: 'hour',
-        //   data: [3, 4, 5, 3, 0, 0, 4, 2, 2, 8, 8, 2, 2, 1, 7, 4, 4, 3, 3, 3, 2, 2, 6, 2, 2, 1, 1, 1, 7, 8]
         data: json
     }
     ],

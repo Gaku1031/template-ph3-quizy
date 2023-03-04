@@ -78,14 +78,26 @@ class Study extends Model
         $others = Study::whereBetween('study_date', [$from, $to])->where('study_languages', '情報システム基礎知識(その他)')->sum("study_hours");
         $month_hours = Study::whereBetween('study_date', [$from, $to])->sum("study_hours");
 
-        $html_ratio = round(($html / $month_hours) * 100);
-        $css_ratio = round(($css / $month_hours) * 100);
-        $javascript_ratio = round(($javascript / $month_hours) * 100);
-        $php_ratio = round(($php / $month_hours) * 100);
-        $laravel_ratio = round(($laravel / $month_hours) * 100);
-        $sql_ratio = round(($sql / $month_hours) * 100);
-        $shell_ratio = round(($shell / $month_hours) * 100);
-        $others_ratio = round(($others / $month_hours) * 100);
+        if($month_hours !== 0) {
+            $html_ratio = round(($html / $month_hours) * 100);
+            $css_ratio = round(($css / $month_hours) * 100);
+            $javascript_ratio = round(($javascript / $month_hours) * 100);
+            $php_ratio = round(($php / $month_hours) * 100);
+            $laravel_ratio = round(($laravel / $month_hours) * 100);
+            $sql_ratio = round(($sql / $month_hours) * 100);
+            $shell_ratio = round(($shell / $month_hours) * 100);
+            $others_ratio = round(($others / $month_hours) * 100);
+        } else {
+            $html_ratio = 0;
+            $css_ratio = 0;
+            $javascript_ratio = 0;
+            $php_ratio = 0;
+            $laravel_ratio = 0;
+            $sql_ratio = 0;
+            $shell_ratio = 0;
+            $others_ratio = 0;
+        }
+
 
         $languages_hours = [$html_ratio, $css_ratio, $javascript_ratio, $php_ratio, $laravel_ratio, $sql_ratio, $shell_ratio, $others_ratio];
         $languages_array =  json_encode($languages_hours);
@@ -104,9 +116,15 @@ class Study extends Model
         $P_hours = Study::whereBetween('study_date', [$from, $to])->where('study_contents', 'POSSE課題')->sum("study_hours");
         $month_hours = Study::whereBetween('study_date', [$from, $to])->sum("study_hours");
 
-        $D_ratio = round(($D_hours / $month_hours) * 100);
-        $N_ratio = round(($N_hours / $month_hours) * 100);
-        $P_ratio = round(($P_hours / $month_hours) * 100);
+        if ($month_hours !== 0) {
+            $D_ratio = round(($D_hours / $month_hours) * 100);
+            $N_ratio = round(($N_hours / $month_hours) * 100);
+            $P_ratio = round(($P_hours / $month_hours) * 100);
+        } else {
+            $D_ratio = 0;
+            $N_ratio = 0;
+            $P_ratio = 0;
+        }
         
 
         //取得した３つの数字を配列にする
