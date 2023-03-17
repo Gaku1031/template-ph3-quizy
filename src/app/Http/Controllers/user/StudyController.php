@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Requests\StudyPostRequest;
 use App\Study;
 use Artisan;
 
@@ -35,7 +36,7 @@ class StudyController extends Controller
         return view('user/study_record', compact('today_hours', 'month_hours', 'total_hours'));
     }
 
-    public function create(Request $request) {
+    public function create(StudyPostRequest $request) {
         $contents = $request->contents;
         $languages = $request->languages;
 

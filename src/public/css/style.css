@@ -698,6 +698,7 @@ textarea {
   font-size: 90%;
   bottom: 30px;
   border: none;
+  cursor: pointer;
 }
 @media(max-width: 800px) {
   .window__footer {
@@ -969,4 +970,15 @@ td.today {
     text-decoration: none;
     font-size: 120%;
   }
+}
+
+.error {
+  margin-top: -10px;
+  margin-bottom: 0;
+}
+
+.error-msg {
+  margin: 0;
+  color: red;
+  font-size: small;
 }

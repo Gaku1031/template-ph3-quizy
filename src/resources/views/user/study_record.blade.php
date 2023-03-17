@@ -85,8 +85,18 @@
       <div class="submit-study-record">
         <input type="button" class="close" id="close-record-submit" value="×" onclick="window.history.back();" >
         <div class="pop__left">
+          @error('datepicker')
+            @component('components.error_message')
+                <strong class="error-msg">{{ $message }}</strong>
+            @endcomponent
+          @enderror
           <label for="" class="title">学習日</label>
           <input type="text" name="datepicker" id="sample" class="day">
+          @error('contents')
+            @component('components.error_message')
+                <strong class="error-msg">{{ $message }}</strong>
+            @endcomponent
+          @enderror
           <label class="title">学習コンテンツ (複数選択可)</label><br>
           <div class="contents">
             <label class="label">
@@ -103,6 +113,11 @@
               <input type="checkbox" class="input__checkbox" value="POSSE課題" name=contents[]><span class="checkbox"></span>POSSE課題
             </label>
           </div>
+          @error('languages')
+              @component('components.error_message')
+                  <strong class="error-msg">{{ $message }}</strong>
+              @endcomponent
+          @enderror
           <label class="title">学習言語 (複数選択可)</label><br>
           <div class="languages">
             <label class="label">
@@ -140,6 +155,11 @@
         </div>
     
         <div class="pop__right">
+          @error('hours')
+              @component('components.error_message')
+                  <strong class="error-msg">{{ $message }}</strong>
+              @endcomponent
+            @enderror
           <label id="study-time" class="title">学習時間<br>
             <input type="text" class="hour" id="hours" name="hours">
           </label>
