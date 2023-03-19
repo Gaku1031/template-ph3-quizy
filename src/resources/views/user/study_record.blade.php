@@ -77,13 +77,13 @@
 
   <!-- pop-up -->
   <!-- window1 -->
-  <div class="window1">
+  <div class="window1" id="window1">
     <div class="overlay"></div>
     <form id="mainForm" action="{{ route('study_record') }}" method="post">
       @csrf
       <input type="hidden" value="1" name="post_id">
       <div class="submit-study-record">
-        <input type="button" class="close" id="close-record-submit" value="×" onclick="window.history.back();" >
+        <input type="button" class="close" id="close-record-submit" value="×">
         <div class="pop__left">
           @error('datepicker')
             @component('components.error_message')
@@ -91,7 +91,7 @@
             @endcomponent
           @enderror
           <label for="" class="title">学習日</label>
-          <input type="text" name="datepicker" id="sample" class="day">
+          <input type="text" name="datepicker" id="sample" class="day" value="{{ old('datepicker') }}">
           @error('contents')
             @component('components.error_message')
                 <strong class="error-msg">{{ $message }}</strong>
@@ -100,17 +100,17 @@
           <label class="title">学習コンテンツ (複数選択可)</label><br>
           <div class="contents">
             <label class="label">
-              <input type="checkbox" class="input__checkbox" value="N予備校" name="contents[]">
+              <input type="checkbox" class="input__checkbox" value="N予備校" name="contents[]" @if (is_array(old( 'contents')) && array_keys(old('contents'), 'N予備校')) checked @endif>
               <span class="checkbox"></span>N予備校
             </label>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" value="ドットインストール" name="contents[]"><span
+              <input type="checkbox" class="input__checkbox" value="ドットインストール" name="contents[]" @if (is_array(old( 'contents')) && array_keys(old('contents'), 'ドットインストール')) checked @endif><span
                 class="checkbox"></span>ドットインストール
             </label>
             <!-- 空のブロック要素を追加 -->
             <div class="space-1"></div>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" value="POSSE課題" name=contents[]><span class="checkbox"></span>POSSE課題
+              <input type="checkbox" class="input__checkbox" value="POSSE課題" name=contents[] @if (is_array(old( 'contents')) && array_keys(old('contents'), 'POSSE課題')) checked @endif><span class="checkbox"></span>POSSE課題
             </label>
           </div>
           @error('languages')
@@ -121,34 +121,34 @@
           <label class="title">学習言語 (複数選択可)</label><br>
           <div class="languages">
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="HTML"><span
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="HTML" @if (is_array(old( 'languages')) && array_keys(old('languages'), 'HTML')) checked @endif><span
                 class="checkbox"></span>HTML
             </label>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="CSS"><span class="checkbox"></span>CSS
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="CSS" @if (is_array(old( 'languages')) && array_keys(old('languages'), 'CSS')) checked @endif><span class="checkbox"></span>CSS
             </label>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="JavaScript"><span
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="JavaScript" @if (is_array(old( 'languages')) && array_keys(old('languages'), 'JavaScript')) checked @endif><span
                 class="checkbox"></span>JavaScript
             </label>
             <div class="space-1"></div>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="PHP"><span class="checkbox"></span>PHP
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="PHP" @if (is_array(old( 'languages')) && array_keys(old('languages'), 'PHP')) checked @endif><span class="checkbox"></span>PHP
             </label>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="Laravel"><span
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="Laravel" @if (is_array(old( 'languages')) && array_keys(old('languages'), 'Laravel')) checked @endif><span
                 class="checkbox"></span>Laravel
             </label>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="SQL"><span class="checkbox"></span>SQL
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="SQL" @if (is_array(old( 'languages')) && array_keys(old('languages'), 'SQL')) checked @endif><span class="checkbox"></span>SQL
             </label>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="SHELL"><span
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="SHELL" @if (is_array(old( 'languages')) && array_keys(old('languages'), 'SHELL')) checked @endif><span
                 class="checkbox"></span>SHELL
             </label>
             <div class="space-1"></div>
             <label class="label">
-              <input type="checkbox" class="input__checkbox" name="languages[]" value="情報システム基礎知識(その他)"><span
+              <input type="checkbox" class="input__checkbox" name="languages[]" value="情報システム基礎知識(その他)" @if (is_array(old( 'languages')) && array_keys(old('languages'), '情報システム基礎知識(その他)')) checked @endif><span
                 class="checkbox"></span>情報システム基礎知識(その他)
             </label>
           </div>
@@ -161,10 +161,10 @@
               @endcomponent
             @enderror
           <label id="study-time" class="title">学習時間<br>
-            <input type="text" class="hour" id="hours" name="hours">
+            <input type="text" class="hour" id="hours" name="hours" value="{{ old('hours') }}">
           </label>
           <label id="twitter-comment" class="title">Twitter用コメント<br>
-            <textarea name="twitter" id="twitter" cols="30" rows="10"></textarea>
+            <textarea name="twitter" id="twitter" cols="30" rows="10" value="{{ old('twitter') }}"></textarea>
           </label>
           <label class="label__twitter">
             <input type="checkbox" class="t__checkbox" name="share" value="twitter" id="checked"><span
