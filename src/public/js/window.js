@@ -1,4 +1,9 @@
 const studyRecord = document.querySelector('.window1');
+const closeBtn = document.getElementById('close-record-submit');
+
+closeBtn.addEventListener('click', () => {
+  window.location.assign('http://localhost/')
+})
 
 const responsiveSubmitButton = document.querySelector('.p-footer__nav__record');
 responsiveSubmitButton.addEventListener('click', () => {
